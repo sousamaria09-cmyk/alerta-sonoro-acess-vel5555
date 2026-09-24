@@ -1,0 +1,250 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- Responsividade em celulares, tablets e notebooks -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Alerta Sonoro Acessível - transforma a intensidade dos sons do ambiente em alertas visuais."
+    >
+
+    <title>🔊 Alerta Sonoro Acessível</title>
+
+    <!-- Arquivo de estilos -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <main class="container">
+
+        <!-- CABEÇALHO -->
+        <header class="header">
+            <div class="header-icon" aria-hidden="true">🔊</div>
+
+            <h1>Alerta Sonoro Acessível</h1>
+
+            <p>
+                Transformando sons do ambiente em alertas visuais.
+            </p>
+        </header>
+
+
+        <!-- ÁREA PRINCIPAL DO ALERTA -->
+        <section
+            id="alertCard"
+            class="alert-card state-idle"
+            aria-live="polite"
+            aria-atomic="true"
+        >
+
+            <div
+                id="statusEmoji"
+                class="status-emoji"
+                aria-hidden="true"
+            >
+                🎤
+            </div>
+
+            <h2 id="statusTitle">Microfone desligado</h2>
+
+            <p id="statusMessage">
+                Clique no botão abaixo para começar.
+            </p>
+
+            <div
+                id="statusDescription"
+                class="status-description"
+            >
+                O sistema analisará apenas a intensidade do som.
+            </div>
+
+        </section>
+
+
+        <!-- BOTÃO DO MICROFONE -->
+        <section class="controls">
+
+            <button
+                id="microphoneButton"
+                class="microphone-button"
+                type="button"
+            >
+                🎤 Ativar Microfone
+            </button>
+
+            <p
+                id="microphoneStatus"
+                class="microphone-status"
+                aria-live="polite"
+            >
+                Aguardando autorização do microfone.
+            </p>
+
+        </section>
+
+
+        <!-- MEDIDOR DE SOM -->
+        <section class="sound-meter">
+
+            <div class="meter-header">
+                <h2>🔊 Intensidade do som</h2>
+
+                <span
+                    id="intensityValue"
+                    class="intensity-value"
+                    aria-label="Intensidade do som"
+                >
+                    0
+                </span>
+            </div>
+
+            <div
+                class="meter"
+                role="progressbar"
+                aria-label="Intensidade do som"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+            >
+                <div
+                    id="meterFill"
+                    class="meter-fill"
+                ></div>
+            </div>
+
+            <div class="meter-scale" aria-hidden="true">
+                <span>0</span>
+                <span>25</span>
+                <span>50</span>
+                <span>75</span>
+                <span>100</span>
+            </div>
+
+            <p class="meter-description">
+                Quanto maior a intensidade do som captado,
+                maior será o preenchimento da barra.
+            </p>
+
+        </section>
+
+
+        <!-- LEGENDA DOS ESTADOS -->
+        <section class="states">
+
+            <h2>Estados do ambiente</h2>
+
+            <div class="state-grid">
+
+                <div class="state-item green">
+                    <span class="state-dot" aria-hidden="true">🟢</span>
+                    <div>
+                        <strong>BAIXO RUÍDO</strong>
+                        <span>Ambiente tranquilo</span>
+                    </div>
+                </div>
+
+                <div class="state-item yellow">
+                    <span class="state-dot" aria-hidden="true">🟡</span>
+                    <div>
+                        <strong>RUÍDO MODERADO</strong>
+                        <span>Atenção!</span>
+                    </div>
+                </div>
+
+                <div class="state-item red">
+                    <span class="state-dot" aria-hidden="true">🔴</span>
+                    <div>
+                        <strong>MUITO BARULHO</strong>
+                        <span>Muito barulho!</span>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- EXPLICAÇÃO DO PROJETO -->
+        <section class="how-it-works">
+
+            <h2>Como funciona?</h2>
+
+            <div class="explanation-list">
+
+                <div class="explanation-item">
+                    <span aria-hidden="true">🎤</span>
+                    <p>
+                        <strong>O microfone</strong> capta o som do ambiente.
+                    </p>
+                </div>
+
+                <div class="explanation-item">
+                    <span aria-hidden="true">💻</span>
+                    <p>
+                        <strong>O JavaScript</strong> analisa a intensidade do som.
+                    </p>
+                </div>
+
+                <div class="explanation-item">
+                    <span aria-hidden="true">🟢🟡🔴</span>
+                    <p>
+                        <strong>O sistema</strong> transforma o som em alertas visuais.
+                    </p>
+                </div>
+
+                <div class="explanation-item">
+                    <span aria-hidden="true">♿</span>
+                    <p>
+                        O objetivo é demonstrar como a tecnologia pode contribuir
+                        para a acessibilidade de pessoas com deficiência auditiva.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- AVISO SOBRE PRIVACIDADE -->
+        <section class="privacy-notice">
+
+            <span class="privacy-icon" aria-hidden="true">🔒</span>
+
+            <div>
+                <strong>Privacidade</strong>
+
+                <p>
+                    Este projeto não grava nem armazena áudio.
+                    O microfone é utilizado somente para medir a intensidade
+                    do som em tempo real.
+                </p>
+            </div>
+
+        </section>
+
+
+        <!-- RODAPÉ -->
+        <footer>
+            <p>
+                Projeto escolar de Tecnologia Assistiva e Acessibilidade
+            </p>
+
+            <p>
+                Desenvolvido com HTML, CSS, JavaScript e Web Audio API.
+            </p>
+        </footer>
+
+    </main>
+
+
+    <!-- Arquivo JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+</html>
+```
